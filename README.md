@@ -35,4 +35,23 @@ It is backed by a Ruby on Rails API to provide:
 - run: $`rake db:dcms`
 - browse to: `localhost:3000`
 
-* ...
+### Data Model
+
+- category
+	- language, craft, art, technology, music, cooking, trade, discipline, literature, 
+	- [Learning Styles](https://www.learning-styles-online.com/overview/)
+
+- resource
+	- book, pdf, video, image, doc 
+
+- source
+	- subject matter expert
+	- resource provider or curator
+	- organization
+
+- activity
+	- (learn) hello_world
+	- (internalize) improvise-deploy-blog-teach
+	- (quantity) repeat for retention, do it alot
+	- (quality) research more, go deeper
+
