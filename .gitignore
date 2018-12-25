@@ -24,3 +24,4 @@
 
 # Ignore cloudinary.yml
 /config/cloudindary.yml
+cloudindary.yml
