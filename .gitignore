@@ -24,5 +24,3 @@
 
 # Ignore cloudinary.yml
 /config/cloudinary.yml
-
-/config/test.rb
