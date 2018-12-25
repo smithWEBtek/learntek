@@ -23,5 +23,6 @@
 /config/master.key
 
 # Ignore cloudinary.yml
-/config/cloudindary.yml
-cloudindary.yml
+/config/cloudinary.yml
+
+/config/test.rb
