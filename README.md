@@ -37,21 +37,61 @@ It is backed by a Ruby on Rails API to provide:
 
 ### Data Model
 
-- category
-	- language, craft, art, technology, music, cooking, trade, discipline, literature, 
-	- [Learning Styles](https://www.learning-styles-online.com/overview/)
+#### RESOURCE
+*book, pdf, video, image, doc, url, course*
+```ruby 
+has_many :categories
+belongs_to :source
 
-- resource
-	- book, pdf, video, image, doc 
+t.string :public_id
+t.string :url
+t.string :secure_url
+t.integer :width
+t.integer :height
+t.string :format
+```
 
-- source
-	- subject matter expert
-	- resource provider or curator
-	- organization
+#### TRACK
+*categorized activities using resources*
+```ruby
+has_many :resources
+has_many :sources, through: :resources
+has_many :activities
 
-- activity
-	- (learn) hello_world
-	- (internalize) improvise-deploy-blog-teach
-	- (quantity) repeat for retention, do it alot
-	- (quality) research more, go deeper
+t.string :name
+t.string :category
+```
 
+#### CATEGORY
+*language, craft, art, technology, music, cooking, trade, discipline, literature (area of study)*
+
+- [Learning Styles](https://www.learning-styles-online.com/overview/)
+
+```ruby 
+has_many :resources
+has_many :sources
+```
+
+#### SOURCE
+*subject matter expert, resource provider or curator, organization, mentor*
+```ruby
+belongs_to :category
+has_many :resources
+
+t.string :name
+t.string :url
+t.string :description
+```
+
+#### ACTIVITY
+*action steps using categorized resources, organized by track*
+
+- (learn) hello_world
+- (internalize) improvise-deploy-blog-teach
+- (quantity) repeat for retention, do it alot
+- (quality) research more, go deeper
+
+```ruby
+has_many :tracks
+has_many :resources 
+```
