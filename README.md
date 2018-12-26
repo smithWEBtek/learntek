@@ -124,7 +124,6 @@ has_many :activities
 t.string :name
 t.string :description
 t.string :status
-t.date :goal_date
 t.date :start_date
-t.date :end_date
+t.date :goal_date
 ```
