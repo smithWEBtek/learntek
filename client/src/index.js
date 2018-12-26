@@ -18,8 +18,10 @@ function getApiData(event) {
 		.then(res => res.json()
 			.then(data => {
 				console.log("data: ", data)
+
 				switch (url) {
 					case 'tracks':
+						document.getElementById('tracks-data').innerHTML = ''
 						data.forEach(item => {
 							let newTrack = new Track(item)
 							let html = newTrack.trackHTML()
@@ -35,52 +37,9 @@ function getApiData(event) {
 						})
 						break;
 
-
 					default:
-						console.log('there was no track data');
+						console.log('there was no data returned');
 				}
 			})
 		)
-}
-
-class Track {
-	constructor(obj) {
-		this.name = obj.name
-		this.category_id = obj.category_id
-		this.name = obj.name
-		this.description = obj.description
-		this.category_id = obj.category_id
-		this.status = obj.status
-		this.start_date = obj.start_date
-		this.goal_date = obj.goal_date
-	}
-}
-
-Track.prototype.trackHTML = function () {
-	return (`
-		<div>
-			<h3>${this.name}</h3>
-		</div>
-	`)
-}
-
-class Resource {
-	constructor(obj) {
-		this.name = obj.name
-		this.category_id = obj.category_id
-		this.name = obj.name
-		this.description = obj.description
-		this.category_id = obj.category_id
-		this.status = obj.status
-		this.start_date = obj.start_date
-		this.goal_date = obj.goal_date
-	}
-}
-
-Resource.prototype.resourceHTML = function () {
-	return (`
-		<div>
-		<h3>${this.secure_url || this.name}</h3>
-		</div>
-		`)
 }

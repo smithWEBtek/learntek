@@ -10,7 +10,7 @@ def create_categories
 end
  
 def create_resources
-	Resource.create(category_id: 1, format: 'website', name: 'Traversy Media', url: 'http://www.traversymedia.com/', description: 'Web development & programming in a simple and understandable way.')
+	Resource.create(category_id: 1, format: 'website', name: 'Traversy Media', url: 'http://www.traversymedia.com/', description: 'Web development and programming in a simple and understandable way.')
 	Resource.create(category_id: 1, format: 'website', name: 'Derek Banas', url: 'http://www.newthinktank.com', description: 'Highly focused tutorials on programming and other topics.')
 	Resource.create(category_id: 1, format: 'website', name: 'FunFunFunction', url: 'https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q', description: 'Javascript tutorials')
 	Resource.create(category_id: 1, format: 'website', name: 'FreeCodeCamp', url: 'https://www.youtube.com/playlist?list=PLWKjhJtqVAbleDe3_ZA8h3AO2rXar-q2V', description: 'Javascript tutorials')
