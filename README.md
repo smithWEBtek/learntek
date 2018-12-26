@@ -37,39 +37,14 @@ It is backed by a Ruby on Rails API to provide:
 
 ### Data Model
 
-#### RESOURCE
-*book, pdf, video, image, doc, url, course*
-```ruby 
-has_many :categories
-belongs_to :source
-
-t.string :public_id
-t.string :url
-t.string :secure_url
-t.integer :width
-t.integer :height
-t.string :format
-```
-
-#### TRACK
-*categorized activities using resources*
-```ruby
-has_many :resources
-has_many :sources, through: :resources
-has_many :activities
-
-t.string :name
-t.string :category
-```
 
 #### CATEGORY
-*language, craft, art, technology, music, cooking, trade, discipline, literature (area of study)*
-
-- [Learning Styles](https://www.learning-styles-online.com/overview/)
+*language, craft, art, technology, music, cooking, trade, literature (area of study)*
 
 ```ruby 
 has_many :resources
 has_many :sources
+t.string :name
 ```
 
 #### SOURCE
@@ -83,6 +58,43 @@ t.string :url
 t.string :description
 ```
 
+#### RESOURCE
+*book, pdf, video, image, doc, url, course*
+- [Learning Styles](https://www.learning-styles-online.com/overview/)
+```ruby 
+belongs_to :category
+belongs_to :source
+
+t.string :public_id
+t.string :url
+t.string :secure_url
+t.integer :width
+t.integer :height
+t.string :format
+```
+
+#### TRACK
+*categorized activities using resources organized by complexity*
+```ruby
+has_many :resources
+has_many :sources, through: :resources
+has_many :activities
+
+t.string :name
+t.string :description
+t.integer :category_id
+```
+
+#### TRACK_ACTIVITY
+*join table for track and activity*
+```ruby
+belongs_to :track
+belongs_to :activity
+
+t.integer :track_id
+t.integer :activity_id
+```
+
 #### ACTIVITY
 *action steps using categorized resources, organized by track*
 
@@ -92,6 +104,27 @@ t.string :description
 - (quality) research more, go deeper
 
 ```ruby
+has_many :track_activities
+has_many :tracks, through: :track_activities
+
+t.string :name
+t.string :description
+t.string :status
+```
+
+#### GOAL
+*time based, quantified activites, using categorized resources*
+
+```ruby
 has_many :tracks
-has_many :resources 
+has_many :resources
+has_many :sources
+has_many :activities
+
+t.string :name
+t.string :description
+t.string :status
+t.date :goal_date
+t.date :start_date
+t.date :end_date
 ```

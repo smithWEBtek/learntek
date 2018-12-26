@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
-
-	root '/'
+  resources :categories
+  resources :track_activities
+  resources :sources
+  resources :activities
+  resources :tracks
+  resources :goals
 end

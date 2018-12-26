@@ -4,8 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.4.4'
 
 gem 'active_model_serializers'
-
-
 gem 'cloudinary'
 gem 'carrierwave'
 
