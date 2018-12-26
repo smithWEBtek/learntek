@@ -14,27 +14,39 @@ function getData() {
 function getApiData(event) {
 	event.preventDefault()
 	let url = this.id
+	let dataDiv = document.getElementById('api-data')
+	dataDiv.innerHTML = '...loading...'
+
+	let apiDataHtml = ''
+
 	fetch(baseUrl + url)
 		.then(res => res.json()
 			.then(data => {
-				console.log("data: ", data)
 
 				switch (url) {
 					case 'tracks':
-						document.getElementById('tracks-data').innerHTML = ''
+						console.log("data: ", data)
 						data.forEach(item => {
 							let newTrack = new Track(item)
-							let html = newTrack.trackHTML()
-							document.getElementById('tracks-data').innerHTML += html
+							apiDataHtml += newTrack.trackHTML()
 						})
+						dataDiv.innerHTML = apiDataHtml
 						break;
 
 					case 'resources':
 						data.forEach(item => {
 							let newResource = new Resource(item)
-							let html = newResource.resourceHTML()
-							document.getElementById('resources-data').innerHTML += html
+							apiDataHtml += newResource.resourceHTML()
 						})
+						dataDiv.innerHTML = apiDataHtml
+						break;
+
+					case 'activities':
+						data.forEach(item => {
+							let newActivity = new Activity(item)
+							apiDataHtml += newActivity.activityHTML()
+						})
+						dataDiv.innerHTML = apiDataHtml
 						break;
 
 					default:
