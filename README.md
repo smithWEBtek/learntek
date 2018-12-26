@@ -114,7 +114,6 @@ t.integer :track_id
 t.integer :resource_id
 ```
 
-
 # learnTEK: Front Ends
 
 ## Vanilla JavaScript
@@ -124,6 +123,7 @@ t.integer :resource_id
 - [Rails API with JS Frontend - 2](https://instruction.learn.co/student/video_lectures#/311)
 
 - [Rails API with JS Frontend - 3](https://instruction.learn.co/student/video_lectures#/312)
+
 
 ## jQuery
 
