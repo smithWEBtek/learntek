@@ -137,3 +137,6 @@ t.integer :resource_id
 
 ## Ember
 - TBD course to follow
+
+## Vue
+- TBD course to follow
