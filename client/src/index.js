@@ -1,8 +1,8 @@
 
-getTracks()
+getData()
 console.log("hello javascript---------------------------------");
 
-
+const baseUrl = 'https://learntek.herokuapp.com/api/'
 
 class Track {
 	constructor(obj) {
@@ -25,9 +25,7 @@ Track.prototype.trackHTML = function () {
 	`)
 }
 
-
-
-function getTracks() {
+function getData() {
 	let apiLinks = document.querySelectorAll('a.api-links')
 	apiLinks.forEach(link => {
 		link.addEventListener('click', getApiData)
@@ -36,17 +34,14 @@ function getTracks() {
 
 function getApiData(event) {
 	event.preventDefault()
-	let url = this.href
-	fetch(url)
+	let url = this.id
+	fetch(baseUrl + url)
 		.then(res => res.json()
 			.then(data => {
 				console.log("data: ", data)
 				switch (url) {
-					case 'http://localhost:3000/api/tracks':
+					case '/api/tracks':
 						data.forEach(item => {
-
-							debugger
-
 							let newTrack = new Track(item)
 							let html = newTrack.trackHTML()
 							document.getElementById('tracks-data').append(html)
@@ -56,4 +51,5 @@ function getApiData(event) {
 				}
 			})
 		)
-} 
+}
+
