@@ -1,4 +1,4 @@
-class ResourcesController < ApplicationController
+class Api::ResourcesController < ApplicationController
 	before_action :set_resource, only: [:show, :update, :destroy]
 
 	def index

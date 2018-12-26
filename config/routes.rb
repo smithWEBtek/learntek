@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
-	resources :api do 
+  resources :track_resources
+	root 'api/tracks#index'
+	
+	namespace :api do
 	  resources :categories
 		resources :sources
 		resources :resources
 		resources :tracks
 		resources :activities
   	resources :track_activities
-		resources :goals
+  	resources :track_resources
 	end
 end

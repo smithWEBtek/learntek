@@ -47,42 +47,35 @@ has_many :sources
 t.string :name
 ```
 
-#### SOURCE
-*subject matter expert, resource provider or curator, organization, mentor*
-```ruby
-belongs_to :category
-has_many :resources
-
-t.string :name
-t.string :url
-t.string :description
-```
-
 #### RESOURCE
 *book, pdf, video, image, doc, url, course*
 - [Learning Styles](https://www.learning-styles-online.com/overview/)
 ```ruby 
 belongs_to :category
-belongs_to :source
 
-t.string :public_id
+t.string :name
+t.string :description
+t.string :format
 t.string :url
 t.string :secure_url
+t.string :public_id
 t.integer :width
 t.integer :height
-t.string :format
 ```
 
 #### TRACK
 *categorized activities using resources organized by complexity*
 ```ruby
-has_many :resources
-has_many :sources, through: :resources
+has_many :track_resources
+has_many :resources, through: :track_resources
 has_many :activities
 
 t.string :name
 t.string :description
 t.integer :category_id
+t.string :status
+t.date :start_date
+t.date :goal_date
 ```
 
 #### TRACK_ACTIVITY
@@ -93,6 +86,16 @@ belongs_to :activity
 
 t.integer :track_id
 t.integer :activity_id
+```
+
+#### TRACK_RESOURCE
+*join table for track and activity*
+```ruby
+belongs_to :track
+belongs_to :resource
+
+t.integer :track_id
+t.integer :resource_id
 ```
 
 #### ACTIVITY
@@ -110,20 +113,4 @@ has_many :tracks, through: :track_activities
 t.string :name
 t.string :description
 t.string :status
-```
-
-#### GOAL
-*time based, quantified activites, using categorized resources*
-
-```ruby
-has_many :tracks
-has_many :resources
-has_many :sources
-has_many :activities
-
-t.string :name
-t.string :description
-t.string :status
-t.date :start_date
-t.date :goal_date
 ```

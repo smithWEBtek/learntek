@@ -25,32 +25,18 @@ ActiveRecord::Schema.define(version: 6) do
     t.string "name"
   end
 
-  create_table "goals", force: :cascade do |t|
+  create_table "resources", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "status"
-    t.date "start_date"
-    t.date "goal_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "resources", force: :cascade do |t|
-    t.string "public_id"
+    t.string "format"
     t.string "url"
+    t.integer "category_id"
+    t.string "public_id"
     t.string "secure_url"
     t.integer "width"
     t.integer "height"
-    t.string "format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "sources", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
-    t.string "description"
-    t.integer "category_id"
   end
 
   create_table "track_activities", force: :cascade do |t|
@@ -58,10 +44,18 @@ ActiveRecord::Schema.define(version: 6) do
     t.integer "activity_id"
   end
 
+  create_table "track_resources", force: :cascade do |t|
+    t.integer "track_id"
+    t.integer "resource_id"
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.integer "category_id"
+    t.string "status"
+    t.date "start_date"
+    t.date "goal_date"
   end
 
 end

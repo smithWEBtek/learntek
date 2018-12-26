@@ -1,2 +1,2 @@
-class TrackActivitiesController < ApplicationController
+class Api::TrackActivitiesController < ApplicationController
 end

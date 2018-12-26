@@ -1,6 +1,6 @@
 class Resource < ApplicationRecord
 	belongs_to :category
-	belongs_to :source
+	
 	validates_uniqueness_of :public_id
 
 	def self.getCloudinaryResources
