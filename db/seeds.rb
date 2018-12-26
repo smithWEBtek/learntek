@@ -17,7 +17,6 @@ def create_resources
 	Resource.create(category_id: 1, format: 'website', name: 'Udemy', url: 'https://www.udemy.com/home/my-courses/learning/', description: 'Online courses')
 	Resource.create(category_id: 1, format: 'website', name: 'Coding Bookmarks1', url: 'https://docs.google.com/spreadsheets/u/2/d/1gTP81NGz2P7lTcXwjCSLRBLqjg0_lJ-Ke3X3xkudvAI/edit#gid=708485659', description: 'Spreadsheet of resources')
 	Resource.create(category_id: 1, format: 'website', name: 'tekmarks', url: 'https://www.smithwebtek.com/bookmarks', description: 'Table of bookmarks')
-	Resource.getCloudinaryResources
 end
 
 def create_tracks
