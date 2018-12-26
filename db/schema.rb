@@ -26,15 +26,11 @@ ActiveRecord::Schema.define(version: 6) do
   end
 
   create_table "resources", force: :cascade do |t|
+    t.integer "category_id"
     t.string "name"
-    t.string "description"
     t.string "format"
     t.string "url"
-    t.integer "category_id"
-    t.string "public_id"
-    t.string "secure_url"
-    t.integer "width"
-    t.integer "height"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
