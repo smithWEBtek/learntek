@@ -1,6 +1,5 @@
-
-getData()
 console.log("hello javascript---------------------------------");
+getData()
 
 const baseUrl = 'https://learntek.herokuapp.com/api/'
 
@@ -47,6 +46,15 @@ function getApiData(event) {
 							apiDataHtml += newActivity.activityHTML()
 						})
 						dataDiv.innerHTML = apiDataHtml
+						break;
+
+					case 'categories':
+						data.forEach(item => {
+							let newCategory = new Category(item)
+							apiDataHtml += newCategory.categoryHTML()
+						})
+						dataDiv.innerHTML = apiDataHtml
+						listenCategoryResources()
 						break;
 
 					default:
