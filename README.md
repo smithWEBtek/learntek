@@ -1,10 +1,11 @@
-# learnTEK
+# learnTEK:Rails API
 ### SUMMARY
 The `learnTEK` app provides a web interface for managing the learning experience for any subject that can be learned in a browser.
 It is backed by a Ruby on Rails API to provide: 
 - backend data
 - CRUD operations to the postgresql database
 - Model & Controller interaction with [Cloudinary](http://www.cloudinary.com) (online storage & retreival of digital artifacts at CDN level performance.)
+- [get started with Cloudinary here](#)
 
 * Ruby version: 2.4.4
 
@@ -48,7 +49,7 @@ t.string :name
 ```
 
 #### RESOURCE
-*book, pdf, video, image, doc, url, course*
+*book, pdf, video, image, doc, url, course, mentor*
 - [Learning Styles](https://www.learning-styles-online.com/overview/)
 ```ruby 
 belongs_to :category
@@ -77,7 +78,22 @@ t.string :status
 t.date :start_date
 t.date :goal_date
 ```
+#### ACTIVITY
+*action steps using categorized resources, organized by track*
 
+- (learn) hello_world
+- (internalize) improvise-deploy-blog-teach
+- (quantity) repeat for retention, do it alot
+- (quality) research more, go deeper
+
+```ruby
+has_many :track_activities
+has_many :tracks, through: :track_activities
+
+t.string :name
+t.string :description
+t.string :status
+```
 #### TRACK_ACTIVITY
 *join table for track and activity*
 ```ruby
@@ -98,19 +114,26 @@ t.integer :track_id
 t.integer :resource_id
 ```
 
-#### ACTIVITY
-*action steps using categorized resources, organized by track*
 
-- (learn) hello_world
-- (internalize) improvise-deploy-blog-teach
-- (quantity) repeat for retention, do it alot
-- (quality) research more, go deeper
+# learnTEK: Front Ends
 
-```ruby
-has_many :track_activities
-has_many :tracks, through: :track_activities
+## Vanilla JavaScript
+- following this video series by Cernan Bernardo:
+- [Rails API with JS Frontend - 1](https://instruction.learn.co/student/video_lectures#/309)
 
-t.string :name
-t.string :description
-t.string :status
-```
+- [Rails API with JS Frontend - 2](https://instruction.learn.co/student/video_lectures#/311)
+
+- [Rails API with JS Frontend - 3](https://instruction.learn.co/student/video_lectures#/312)
+
+## jQuery
+
+
+## Handlebars
+- following [Matt Cassara's Handlebars tutorial](https://www.mattcassara.com/using-ajax-handlebarsjs-rails/)
+
+## React
+- starting [with this blog post](#)
+- using patterns [from this Udemy course](#)
+
+## Ember
+- TBD course to follow
