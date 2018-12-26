@@ -11,6 +11,7 @@ class Resource < ApplicationRecord
 		response['resources'].each do |resource|
 			if !Resource.find_by_public_id(resource["public_id"])
 				Resource.create(
+					category_id: 1, 
 					public_id: resource["public_id"].gsub('.pdf', ''), 
 					width: 	resource["width"],
 					height: resource["height"],

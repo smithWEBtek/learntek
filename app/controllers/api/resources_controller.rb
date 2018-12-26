@@ -2,14 +2,8 @@ class Api::ResourcesController < ApplicationController
 	before_action :set_resource, only: [:show, :update, :destroy]
 
 	def index
-		data = Resource.load
-		@cloud_resource_count = data["cloud_resource_count"]
-		@db_resource_count = data["db_resource_count"]
-		@resources = Resource.all.sort_by{|r| r.public_id}
-	end
-
-	def load_resources
-		redirect_to '/resources'
+		@resources = Resource.all
+		render json: @resources
 	end
 
 	def cloudinary_index
@@ -18,6 +12,7 @@ class Api::ResourcesController < ApplicationController
 	end
 	
 	def show
+		render json: @resource
 	end
 	
 	def new 
@@ -72,11 +67,11 @@ class Api::ResourcesController < ApplicationController
 
 	private
 	def set_resource
-		@resource = Resource.find_by_id(params["id"])
+		@resource = Resource.find(params[:id])
 	end
 
 	def resource_params
-		params.require(:resource).permit(:public_id, :width, :height, :format, :url, :secure_url)
+		params.require(:resource).permit(:name, :description, :format, :url, :category_id, :public_id, :secure_url,  :width,  :height)
 	end
 
 	def local_image_path(name)

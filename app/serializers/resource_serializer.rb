@@ -1,5 +1,4 @@
 class ResourceSerializer < ActiveModel::Serializer
-	attributes :id, :public_id, :url, :secure_url, :width, :height, :format
+	attributes :id, :name, :description, :format, :url, :category_id, :public_id, :secure_url,  :width,  :height
 	belongs_to :category
-	belongs_to :source
 end
