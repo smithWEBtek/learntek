@@ -1,7 +1,8 @@
 console.log("hello javascript---------------------------------");
 getData()
 
-const baseUrl = 'https://learntek.herokuapp.com/api/'
+// const baseUrl = 'https://learntek.herokuapp.com/api/'
+const baseUrl = 'http://localhost:3000/api/'
 
 function getData() {
 	let apiLinks = document.querySelectorAll('a.api-links')

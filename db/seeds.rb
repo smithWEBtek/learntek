@@ -17,7 +17,31 @@ def create_resources
 	Resource.create(category_id: 1, format: 'website', name: 'Udemy', url: 'https://www.udemy.com/home/my-courses/learning/', description: 'Online courses')
 	Resource.create(category_id: 1, format: 'website', name: 'Coding Bookmarks1', url: 'https://docs.google.com/spreadsheets/u/2/d/1gTP81NGz2P7lTcXwjCSLRBLqjg0_lJ-Ke3X3xkudvAI/edit#gid=708485659', description: 'Spreadsheet of resources')
 	Resource.create(category_id: 1, format: 'website', name: 'tekmarks', url: 'https://www.smithwebtek.com/bookmarks', description: 'Table of bookmarks')
-end
+
+	Resource.create(category_id: 2, format: 'pdf', name: 'music', url: '#', description: 'music resource')
+	Resource.create(category_id: 2, format: 'pdf', name: 'music', url: '#', description: 'music resource')
+	Resource.create(category_id: 2, format: 'pdf', name: 'music', url: '#', description: 'music resource')
+	Resource.create(category_id: 2, format: 'pdf', name: 'music', url: '#', description: 'music resource')
+	Resource.create(category_id: 2, format: 'pdf', name: 'music', url: '#', description: 'music resource')
+
+	Resource.create(category_id: 3, format: 'pdf', name: 'art', url: '#', description: 'art resource')
+	Resource.create(category_id: 3, format: 'pdf', name: 'art', url: '#', description: 'art resource')
+	Resource.create(category_id: 3, format: 'pdf', name: 'art', url: '#', description: 'art resource')
+	Resource.create(category_id: 3, format: 'pdf', name: 'art', url: '#', description: 'art resource')
+	Resource.create(category_id: 3, format: 'pdf', name: 'art', url: '#', description: 'art resource')
+
+	Resource.create(category_id: 4, format: 'tutorial', name: 'carpentry trade', url: '#', description: 'carpentry trade resource')
+	Resource.create(category_id: 4, format: 'tutorial', name: 'plumbing trade', url: '#', description: 'plumbing trade resource')
+	Resource.create(category_id: 4, format: 'tutorial', name: 'electrical trade', url: '#', description: 'electrical trade resource')
+	Resource.create(category_id: 4, format: 'tutorial', name: 'cabinetry trade', url: '#', description: 'cabinetry trade resource')
+	Resource.create(category_id: 4, format: 'tutorial', name: 'piano trade', url: '#', description: 'piano trade resource')
+
+	Resource.create(category_id: 5, format: 'tutorial', name: 'Spanish course', url: '#', description: 'Spanish course resource')
+	Resource.create(category_id: 5, format: 'tutorial', name: 'French course', url: '#', description: 'French course resource')
+	Resource.create(category_id: 5, format: 'tutorial', name: 'Chinese course', url: '#', description: 'Chinese course resource')
+	Resource.create(category_id: 5, format: 'tutorial', name: 'Italian course', url: '#', description: 'Italian course resource')
+	Resource.create(category_id: 5, format: 'tutorial', name: 'Dutch course', url: '#', description: 'Dutch course resource')
+ end
 
 def create_tracks
 	Track.create(category_id: 1, name: 'React hello world', description: 'do hello world in React', status: 'pending', start_date: '12-26-2018', goal_date: '1/1/2019')

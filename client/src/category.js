@@ -11,28 +11,34 @@ Category.prototype.categoryHTML = function () {
 	return (`
 		<div>
 		<h3>${this.name}</h3>
-		<button class='category-resources' id=${this.id}>show resources</button>	
+		<button class='category-resources-buttons' id=${this.id}>show resources</button>
 		</div>
+		<div data-id=${this.id} class='category-resources-div'></div> 
 		`)
 }
 
-function showCategoryResources(id) {
-	fetch(baseUrl + `categories/${id}/resources`)
-		.then(res => res.json()
-			.then(data => {
-				let resources = data.map(resource => {
-					return (`
-				<p>${resource.name}</p>
-				`)
-				})
-				console.log("resources: ", resources);
-			}))
+function listenCategoryResources() {
+	const categoryResourceButtons = document.querySelectorAll('button.category-resources-buttons')
+	categoryResourceButtons.forEach(button => {
+		button.addEventListener('click', function (event) {
+			event.preventDefault()
+			showCategoryResources(this.id)
+			button.remove()
+		})
+	});
 }
 
-function listenCategoryResources() {
-	const categoryResourceButton = document.querySelector('button.category-resources')
-	categoryResourceButton.addEventListener('click', function (event) {
-		event.preventDefault()
-		showCategoryResources(this.id)
-	});
+function showCategoryResources(id) {
+	fetch(baseUrl + 'resources.json')
+		.then(res => res.json()
+			.then(data => {
+				let resources = data.filter(r => {
+					return r.category_id === +id
+				})
+				let resourcesHTML = resources.map((r, i) => {
+					return `<li>${r.name}</li>`
+				}).join('')
+				document.querySelectorAll('.category-resources-div')[id - 1].innerHTML = resourcesHTML
+			})
+		)
 }
