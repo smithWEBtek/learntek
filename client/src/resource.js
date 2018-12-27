@@ -1,4 +1,5 @@
-newResource()
+// newResource()
+// newResourceForm()
 
 class Resource {
 	constructor(obj) {
@@ -18,30 +19,29 @@ Resource.prototype.resourceHTML = function () {
 		<div>
 		<h3>${this.name}</h3>
 		</div>
-		`)
+	`)
 }
 
 function newResource() {
-	let newApiLinks = document.querySelectorAll('a.new-api-links')
-	newApiLinks.forEach(link => {
-		link.addEventListener('click', function (event) {
-			event.preventDefault()
-			console.log('newResource link clicked........................');
-			newResourceForm()
-		})
+	let newResourceLink = document.getElementById('new-resource')
+	debugger;
+	newResourceLink.addEventListener('click', function (event) {
+		event.preventDefault()
+		console.log('newResource link clicked........................');
+
 	})
+	newResourceForm()
 }
 
 function newResourceForm() {
+	// populate categories dropdown
 	fetch(baseUrl + 'categories')
 		.then(res => res.json()
 			.then(categories => {
-				console.log("categories: ", categories)
-
 				let categoryOptions = categories.map(category => {
 					return (`<option value=${category.id}>${category.name}</option>`)
 				})
-
+				// create form
 				let resourceForm = (`
 					<fieldset> 
 						<form id='new-resource-form'>
@@ -56,16 +56,21 @@ function newResourceForm() {
 						</form>
 					</fieldset>
 			`)
+				// put form onto DOM
 				document.getElementById('new-resource-form-div').innerHTML = resourceForm
-				newResourceSubmit()
+				// listen for click of new resource link
+				createResource()
 			})
 		)
 }
 
-function newResourceSubmit() {
+function createResource() {
 	let form = document.querySelector('form#new-resource-form')
 	form.addEventListener('submit', function (event) {
 		event.preventDefault()
+
+
+		debugger;
 
 		let name = event.currentTarget.name.value
 		let description = event.currentTarget.description.value

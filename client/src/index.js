@@ -1,10 +1,11 @@
 console.log("hello javascript---------------------------------");
-getData()
+listenToDataLinks()
+listenForNewDataLinks()
 
 // const baseUrl = 'https://learntek.herokuapp.com/api/'
 const baseUrl = 'http://localhost:3000/api/'
 
-function getData() {
+function listenToDataLinks() {
 	let apiLinks = document.querySelectorAll('a.api-links')
 	apiLinks.forEach(link => {
 		link.addEventListener('click', getApiData)
@@ -24,7 +25,7 @@ function getApiData(event) {
 			.then(data => {
 
 				switch (url) {
-					case 'tracks':
+					case 'new-tracks':
 						console.log("data: ", data)
 						data.forEach(item => {
 							let newTrack = new Track(item)
@@ -33,7 +34,7 @@ function getApiData(event) {
 						dataDiv.innerHTML = apiDataHtml
 						break;
 
-					case 'resources':
+					case 'new-resources':
 						data.forEach(item => {
 							let newResource = new Resource(item)
 							apiDataHtml += newResource.resourceHTML()
@@ -41,7 +42,7 @@ function getApiData(event) {
 						dataDiv.innerHTML = apiDataHtml
 						break;
 
-					case 'activities':
+					case 'new-activities':
 						data.forEach(item => {
 							let newActivity = new Activity(item)
 							apiDataHtml += newActivity.activityHTML()
@@ -49,7 +50,7 @@ function getApiData(event) {
 						dataDiv.innerHTML = apiDataHtml
 						break;
 
-					case 'categories':
+					case 'new-categories':
 						data.forEach(item => {
 							let newCategory = new Category(item)
 							apiDataHtml += newCategory.categoryHTML()
@@ -64,3 +65,34 @@ function getApiData(event) {
 			})
 		)
 }
+
+function listenForNewDataLinks() {
+	let apiNewLinks = document.querySelectorAll('a.api-new-links')
+	apiNewLinks.forEach(link => {
+		link.addEventListener('click', getNewForm)
+	})
+}
+
+function getNewForm(event) {
+	event.preventDefault()
+	let form = this.id
+	let dataDiv = document.getElementById('api-data')
+	dataDiv.innerHTML = '... loading new form ...'
+	switch (form) {
+		case 'new-track':
+			newTrackForm()
+			break;
+		case 'new-resource':
+			newResourceForm()
+			break;
+		case 'new-activity':
+			newActivityForm()
+			break;
+		case 'new-category':
+			newCategoryForm()
+			break;
+		default:
+			console.log('there was no form specified in the request');
+	}
+}
+
