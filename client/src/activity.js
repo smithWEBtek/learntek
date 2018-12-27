@@ -1,4 +1,3 @@
-
 class Activity {
 	constructor(obj) {
 		this.name = obj.name
@@ -10,7 +9,11 @@ class Activity {
 Activity.prototype.activityHTML = function () {
 	return (`
 		<div>
-			<h3>${this.name}</h3>
+			<fieldset>
+				<h3>${this.name}</h3>
+				<p>${this.description}</p>
+				<p>status: ${this.status}</p>
+			</fieldset>	
 		</div>
 	`)
 }

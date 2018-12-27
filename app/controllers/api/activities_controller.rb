@@ -40,7 +40,7 @@ class Api::ActivitiesController < ApplicationController
 		end
 
 		def activity_params
-			params.require(:activity).permit(:name, :description, :status)
+			params.require(:activity).permit(:name, :description, :status)	
 		end
 end
 	

@@ -1,4 +1,10 @@
 
+function getData() {
+	let apiLinks = document.querySelectorAll('a.api-links')
+	apiLinks.forEach(link => {
+	})
+}
+
 class Category {
 	constructor(obj) {
 		this.id = obj.id
@@ -10,8 +16,8 @@ class Category {
 Category.prototype.categoryHTML = function () {
 	return (`
 		<div>
-		<h3>${this.name}</h3>
-		<button class='category-resources-buttons' id=${this.id}>show resources</button>
+			<h3>${this.name}</h3>
+			<button class='category-resources-buttons' id=${this.id}>show resources</button>
 		</div>
 		<div data-id=${this.id} class='category-resources-div'></div> 
 		`)
@@ -42,3 +48,12 @@ function showCategoryResources(id) {
 			})
 		)
 }
+
+// getCategories = () => {
+// 	fetch(baseUrl + 'categories')
+// 		.then(res => res.json()
+// 			.then(data => {
+// 				console.log("categories data: ", data)
+// 			})
+// 		)
+// }
