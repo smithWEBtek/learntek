@@ -1,3 +1,4 @@
+console.log('activity.js loaded ...');
 class Activity {
 	constructor(obj) {
 		this.name = obj.name

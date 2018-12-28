@@ -1,4 +1,5 @@
 $(() => {
+	console.log('index.js loaded ...');
 	listenToDataLinks()
 	listenForNewFormLinks()
 })

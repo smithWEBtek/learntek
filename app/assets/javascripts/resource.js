@@ -1,4 +1,4 @@
-
+console.log('resource.js loaded ...');
 class Resource {
 	constructor(obj) {
 		this.name = obj.name
