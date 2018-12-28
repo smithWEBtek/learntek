@@ -63,6 +63,11 @@ def create_tracks
 	Track.create(category_id: 1, name: 'React', description: 'read docs, finish Udemy course', status: 'pending', start_date: '12-26-2018', goal_date: '1/1/2019')
 	Track.create(category_id: 1, name: 'Ember', description: 'read book, follow video, build demo app', status: 'pending', start_date: '12-26-2018', goal_date: '1/1/2019')
 	Track.create(category_id: 1, name: 'Vue', description: 'read book, follow video, build demo app', status: 'pending', start_date: '12-26-2018', goal_date: '1/1/2019')
+	
+	Track.create(category_id: 2, name: 'Scales', description: 'practices scales', status: 'pending', start_date: '12-26-2018', goal_date: '1/1/2019')
+	Track.create(category_id: 2, name: 'Chords', description: 'practices chords', status: 'pending', start_date: '12-26-2018', goal_date: '1/1/2019')
+	Track.create(category_id: 2, name: 'Tunes', description: 'practices tunes', status: 'pending', start_date: '12-26-2018', goal_date: '1/1/2019')
+	Track.create(category_id: 2, name: 'Grooves', description: 'practices grooves', status: 'pending', start_date: '12-26-2018', goal_date: '1/1/2019')
 
 end
 
