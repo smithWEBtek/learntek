@@ -1,4 +1,5 @@
-console.log('resource.js loaded ---');
+// console.log('resource.js loaded ---');
+
 class Resource {
 	constructor(obj) {
 		this.name = obj.name
@@ -13,33 +14,58 @@ class Resource {
 
 	static resourceForm(categoryOptions) {
 		return (`
-			<fieldset>
-			<strong>New Resource</strong>
-			<form id='new-resource-form'>
-			<input id='name' placeholder='resource name' /><br>
-			<input id='description' placeholder='description'/><br>
-			<input id='url' placeholder='url'/><br>
-			<input id='format' placeholder='format'/><br>
-			
-			<select id="categorySelect"><br>
-			<option>choose category</option>
-			${categoryOptions}
-			</select><br>
-			
-			<button type='submit'>Submit Resource</button>
-			</form>
-			</fieldset>
-		`)
+		<form id='new-resource-form'>
+		<label class='subtitle'>New Resource</label>
+		<div class="field">
+			<div class="control">
+				<div class="select is-success">
+					<select>
+						<option>category</option>
+						${categoryOptions}
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="field">
+			<div class="control has-icons-left has-icons-right">
+				<input class="input is-success" type="text" placeholder="name">
+			</div>
+		</div>
+		<div class="field">
+			<div class="control has-icons-left has-icons-right">
+				<input class="input is-success" type="text" placeholder="description">
+			</div>
+		</div>
+		<div class="field">
+			<div class="control has-icons-left has-icons-right">
+				<input class="input is-success" type="text" placeholder="format">
+			</div>
+		</div>
+		<div class="field">
+			<div class="control has-icons-left has-icons-right">
+				<input class="input is-success" type="text" placeholder="url">
+			</div>
+		</div>
+		 
+		<div class="field is-grouped">
+			<div class="control is-success">
+				<button class="button is-link">Submit</button>
+			</div>
+			<div class="control">
+				<button class="button is-text">Cancel</button>
+			</div>
+		</div>
+		</form>
+`)
 	}
-	// end of class 
 }
 
 Resource.prototype.resourceHTML = function () {
 	return (`
-		<div>
-		<h3>${this.name}</h3>
-		</div>
-		`)
+<div>
+	<h3>${this.name}</h3>
+</div>
+`)
 }
 
 function newResourceForm() {
@@ -55,24 +81,24 @@ function newResourceForm() {
 	}).then(res => res.json()
 		.then(categories => {
 			categoryOptions = categories.map(category => {
-				return (`<option value=${category.id}>${category.name}</option>`)
+				return (`<option class="dropdown-item" value=${category.id}>${category.name}</option>`)
 			})
 			let form = Resource.resourceForm(categoryOptions)
-			document.getElementById('new-form-div').innerHTML = form
+			$('#new-form-div').html(form)
 			createResource()
 		})
 	)
 }
 
 function createResource() {
-	let form = document.querySelector('form#new-resource-form')
-	form.addEventListener('submit', function (event) {
+	$('form#new-resource-form').on('submit', function (event) {
 		event.preventDefault()
-		let name = event.currentTarget.name.value
-		let description = event.currentTarget.description.value
-		let url = event.currentTarget.url.value
-		let format = event.currentTarget.format.value
-		let category_id = event.currentTarget.categorySelect.value
+
+		let category_id = event.target[0].value
+		let name = event.target[1].value
+		let description = event.target[2].value
+		let format = event.target[3].value
+		let url = event.target[4].value
 
 		let resource = {
 			name: name,

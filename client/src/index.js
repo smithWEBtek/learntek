@@ -1,5 +1,5 @@
 $(() => {
-	console.log('index.js loaded ---');
+	// console.log('index.js loaded ---');
 	listenToDataLinks()
 	listenForNewFormLinks()
 	clearNewFormDiv()
@@ -7,16 +7,18 @@ $(() => {
 })
 
 // figure out how to have a fallback api source for Ajax request
-const baseUrl = 'https://learntek.herokuapp.com/api/'
+// const baseUrl = 'https://learntek.herokuapp.com/api/'
 // const baseUrl = 'http://localhost:3000/api/' || 'https://learntek.herokuapp.com/api/'
-// const baseUrl = 'http://localhost:3000/api/'
+const baseUrl = 'http://localhost:3000/api/'
 
 function clearApiDataDiv() {
 	$('div#api-data').html('')
+	console.log('clearApiDataDiv() called **********************************')
 }
 
 function clearNewFormDiv() {
-	document.getElementById('new-form-div').innerHTML = ''
+	$('#new-form-div').html('')
+	console.log('clearNewFormDiv() called **********************************')
 }
 
 function listenToDataLinks() {
@@ -25,9 +27,10 @@ function listenToDataLinks() {
 
 function getApiData(event) {
 	event.preventDefault()
+	clearNewFormDiv()
 	let url = this.id
 	let dataDiv = $('div#api-data')
-	dataDiv.html(`<p><i class="fa fa-spinner fa-spin" style="font-size:24px"></i>    fetching <strong>${url}</strong> API data</p>`)
+	dataDiv.html(`<p><i class="fa fa-spinner fa-spin" style="font-size:24px"></i> fetching <strong>${url}</strong> API data</p>`)
 
 	setTimeout(() => {
 		$.ajax({
@@ -36,7 +39,6 @@ function getApiData(event) {
 			dataType: 'json'
 		}).done(function (data) {
 			clearApiDataDiv()
-			clearNewFormDiv()
 			switch (url) {
 				case 'tracks':
 					data.forEach(item => {
@@ -71,7 +73,7 @@ function getApiData(event) {
 					console.log('there was no data returned');
 			}
 		})
-	}, 2500);
+	}, 1000);
 }
 
 function listenForNewFormLinks() {
