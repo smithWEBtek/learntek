@@ -1,16 +1,15 @@
 $(() => {
-	console.log('index.js loaded ...');
-
-
+	console.log('index.js loaded ---');
 	listenToDataLinks()
 	listenForNewFormLinks()
 	clearNewFormDiv()
 	clearApiDataDiv()
 })
 
-const baseUrl = 'https://learntek.herokuapp.com/api/'
-// const baseUrl = 'http://localhost:3000/api/' || 'https://learntek.herokuapp.com/api/'
 // figure out how to have a fallback api source for Ajax request
+// const baseUrl = 'https://learntek.herokuapp.com/api/'
+// const baseUrl = 'http://localhost:3000/api/' || 'https://learntek.herokuapp.com/api/'
+const baseUrl = 'http://localhost:3000/api/'
 
 function clearApiDataDiv() {
 	$('div#api-data').html('')

@@ -1,4 +1,4 @@
-console.log('resource.js loaded ...');
+console.log('resource.js loaded ---');
 class Resource {
 	constructor(obj) {
 		this.name = obj.name
@@ -10,6 +10,28 @@ class Resource {
 		this.start_date = obj.start_date
 		this.goal_date = obj.goal_date
 	}
+
+	static resourceForm(categoryOptions) {
+		return (`
+			<fieldset>
+			<strong>New Resource</strong>
+			<form id='new-resource-form'>
+			<input id='name' placeholder='resource name' /><br>
+			<input id='description' placeholder='description'/><br>
+			<input id='url' placeholder='url'/><br>
+			<input id='format' placeholder='format'/><br>
+			
+			<select id="categorySelect"><br>
+			<option>choose category</option>
+			${categoryOptions}
+			</select><br>
+			
+			<button type='submit'>Submit Resource</button>
+			</form>
+			</fieldset>
+		`)
+	}
+	// end of class 
 }
 
 Resource.prototype.resourceHTML = function () {
@@ -17,39 +39,29 @@ Resource.prototype.resourceHTML = function () {
 		<div>
 		<h3>${this.name}</h3>
 		</div>
-	`)
+		`)
 }
 
 function newResourceForm() {
 	clearApiDataDiv()
-	fetch(baseUrl + 'categories')
-		.then(res => res.json()
-			.then(categories => {
+	let categoryOptions = ''
 
-				let categoryOptions = categories.map(category => {
-					return (`<option value=${category.id}>${category.name}</option>`)
-				})
-
-				let resourceForm = (`
-					<fieldset>
-						<strong>New Resource</strong>
-						<form id='new-resource-form'>
-							<input id='name' placeholder='resource name' /><br>
-							<input id='description' placeholder='description'/><br>
-							<input id='url' placeholder='url'/><br>
-							<input id='format' placeholder='format'/><br>
-							<select id="categorySelect"><br>
-							<option>choose category</option>
-								${categoryOptions}
-							</select><br>
-							<button type='submit'>Submit Resource</button>
-						</form>
-					</fieldset>
-				`)
-				document.getElementById('new-form-div').innerHTML = resourceForm
-				createResource()
+	fetch(baseUrl + 'categories', {
+		method: 'get',
+		headers: {
+			'Accept': 'application/json, text/plain, */*',
+			'Content-Type': 'application/json'
+		}
+	}).then(res => res.json()
+		.then(categories => {
+			categoryOptions = categories.map(category => {
+				return (`<option value=${category.id}>${category.name}</option>`)
 			})
-		)
+			let form = Resource.resourceForm(categoryOptions)
+			document.getElementById('new-form-div').innerHTML = form
+			createResource()
+		})
+	)
 }
 
 function createResource() {

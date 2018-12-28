@@ -1,4 +1,4 @@
-console.log('category.js loaded ...');
+console.log('category.js loaded ---');
 function getData() {
 	let apiLinks = document.querySelectorAll('a.api-links')
 	apiLinks.forEach(link => {
