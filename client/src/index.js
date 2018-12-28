@@ -1,6 +1,6 @@
-console.log("hello javascript---------------------------------");
+console.log("--- hello javascript ---");
 listenToDataLinks()
-listenForNewDataLinks()
+listenForNewFormLinks()
 
 // const baseUrl = 'https://learntek.herokuapp.com/api/'
 const baseUrl = 'http://localhost:3000/api/'
@@ -16,17 +16,16 @@ function getApiData(event) {
 	event.preventDefault()
 	let url = this.id
 	let dataDiv = document.getElementById('api-data')
-	dataDiv.innerHTML = '...loading...'
 
+	dataDiv.innerHTML = '...loading...'
 	let apiDataHtml = ''
 
 	fetch(baseUrl + url)
 		.then(res => res.json()
 			.then(data => {
-
 				switch (url) {
-					case 'new-tracks':
-						console.log("data: ", data)
+
+					case 'tracks':
 						data.forEach(item => {
 							let newTrack = new Track(item)
 							apiDataHtml += newTrack.trackHTML()
@@ -34,7 +33,7 @@ function getApiData(event) {
 						dataDiv.innerHTML = apiDataHtml
 						break;
 
-					case 'new-resources':
+					case 'resources':
 						data.forEach(item => {
 							let newResource = new Resource(item)
 							apiDataHtml += newResource.resourceHTML()
@@ -42,7 +41,7 @@ function getApiData(event) {
 						dataDiv.innerHTML = apiDataHtml
 						break;
 
-					case 'new-activities':
+					case 'activities':
 						data.forEach(item => {
 							let newActivity = new Activity(item)
 							apiDataHtml += newActivity.activityHTML()
@@ -50,7 +49,7 @@ function getApiData(event) {
 						dataDiv.innerHTML = apiDataHtml
 						break;
 
-					case 'new-categories':
+					case 'categories':
 						data.forEach(item => {
 							let newCategory = new Category(item)
 							apiDataHtml += newCategory.categoryHTML()
@@ -66,7 +65,7 @@ function getApiData(event) {
 		)
 }
 
-function listenForNewDataLinks() {
+function listenForNewFormLinks() {
 	let apiNewLinks = document.querySelectorAll('a.api-new-links')
 	apiNewLinks.forEach(link => {
 		link.addEventListener('click', getNewForm)
@@ -76,6 +75,10 @@ function listenForNewDataLinks() {
 function getNewForm(event) {
 	event.preventDefault()
 	let form = this.id
+	console.log('form: ', form);
+
+
+
 	let dataDiv = document.getElementById('api-data')
 	dataDiv.innerHTML = '... loading new form ...'
 	switch (form) {

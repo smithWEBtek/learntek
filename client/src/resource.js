@@ -22,16 +22,14 @@ Resource.prototype.resourceHTML = function () {
 	`)
 }
 
-function newResource() {
-	let newResourceLink = document.getElementById('new-resource')
-	debugger;
-	newResourceLink.addEventListener('click', function (event) {
-		event.preventDefault()
-		console.log('newResource link clicked........................');
-
-	})
-	newResourceForm()
-}
+// function newResource() {
+// 	let newResourceLink = document.getElementById('new-resource')
+// 	newResourceLink.addEventListener('click', function (event) {
+// 		event.preventDefault()
+// 		console.log('newResource link clicked........................');
+// 	})
+// 	newResourceForm()
+// }
 
 function newResourceForm() {
 	// populate categories dropdown
@@ -55,7 +53,7 @@ function newResourceForm() {
 							<button type='submit'>Submit Resource</button>
 						</form>
 					</fieldset>
-			`)
+				`)
 				// put form onto DOM
 				document.getElementById('new-resource-form-div').innerHTML = resourceForm
 				// listen for click of new resource link
@@ -68,10 +66,6 @@ function createResource() {
 	let form = document.querySelector('form#new-resource-form')
 	form.addEventListener('submit', function (event) {
 		event.preventDefault()
-
-
-		debugger;
-
 		let name = event.currentTarget.name.value
 		let description = event.currentTarget.description.value
 		let url = event.currentTarget.url.value

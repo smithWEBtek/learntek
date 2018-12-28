@@ -19,3 +19,4 @@ Track.prototype.trackHTML = function () {
 		</div>
 	`)
 }
+
