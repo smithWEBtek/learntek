@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :track_categories
   resources :track_resources
 	root 'api/tracks#index'
 	
