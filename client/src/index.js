@@ -1,4 +1,3 @@
-console.log("--- hello javascript ---");
 listenToDataLinks()
 listenForNewFormLinks()
 
@@ -28,6 +27,7 @@ function getApiData(event) {
 					case 'tracks':
 						data.forEach(item => {
 							let newTrack = new Track(item)
+							document.getElementById('new-form-div').innerHTML = ''
 							apiDataHtml += newTrack.trackHTML()
 						})
 						dataDiv.innerHTML = apiDataHtml
@@ -36,6 +36,7 @@ function getApiData(event) {
 					case 'resources':
 						data.forEach(item => {
 							let newResource = new Resource(item)
+							document.getElementById('new-form-div').innerHTML = ''
 							apiDataHtml += newResource.resourceHTML()
 						})
 						dataDiv.innerHTML = apiDataHtml
@@ -44,6 +45,7 @@ function getApiData(event) {
 					case 'activities':
 						data.forEach(item => {
 							let newActivity = new Activity(item)
+							document.getElementById('new-form-div').innerHTML = ''
 							apiDataHtml += newActivity.activityHTML()
 						})
 						dataDiv.innerHTML = apiDataHtml
@@ -52,6 +54,7 @@ function getApiData(event) {
 					case 'categories':
 						data.forEach(item => {
 							let newCategory = new Category(item)
+							document.getElementById('new-form-div').innerHTML = ''
 							apiDataHtml += newCategory.categoryHTML()
 						})
 						dataDiv.innerHTML = apiDataHtml
@@ -75,12 +78,7 @@ function listenForNewFormLinks() {
 function getNewForm(event) {
 	event.preventDefault()
 	let form = this.id
-	console.log('form: ', form);
 
-
-
-	let dataDiv = document.getElementById('api-data')
-	dataDiv.innerHTML = '... loading new form ...'
 	switch (form) {
 		case 'new-track':
 			newTrackForm()

@@ -1,5 +1,3 @@
-// newResource()
-// newResourceForm()
 
 class Resource {
 	constructor(obj) {
@@ -22,41 +20,32 @@ Resource.prototype.resourceHTML = function () {
 	`)
 }
 
-// function newResource() {
-// 	let newResourceLink = document.getElementById('new-resource')
-// 	newResourceLink.addEventListener('click', function (event) {
-// 		event.preventDefault()
-// 		console.log('newResource link clicked........................');
-// 	})
-// 	newResourceForm()
-// }
-
 function newResourceForm() {
-	// populate categories dropdown
 	fetch(baseUrl + 'categories')
 		.then(res => res.json()
 			.then(categories => {
+
 				let categoryOptions = categories.map(category => {
 					return (`<option value=${category.id}>${category.name}</option>`)
 				})
-				// create form
+
 				let resourceForm = (`
-					<fieldset> 
+					<fieldset>
+						<strong>New Resource</strong>
 						<form id='new-resource-form'>
 							<input id='name' placeholder='resource name' /><br>
 							<input id='description' placeholder='description'/><br>
 							<input id='url' placeholder='url'/><br>
 							<input id='format' placeholder='format'/><br>
 							<select id="categorySelect"><br>
+							<option>choose category</option>
 								${categoryOptions}
 							</select><br>
 							<button type='submit'>Submit Resource</button>
 						</form>
 					</fieldset>
 				`)
-				// put form onto DOM
-				document.getElementById('new-resource-form-div').innerHTML = resourceForm
-				// listen for click of new resource link
+				document.getElementById('new-form-div').innerHTML = resourceForm
 				createResource()
 			})
 		)
@@ -88,10 +77,7 @@ function createResource() {
 			},
 			body: JSON.stringify(resource)
 		}).then(function (response) {
-			console.log('response: ', response)
-			console.log('new resource form submitted .............')
+			document.getElementById('new-form-div').innerHTML = ''
 		});
 	})
 }
-
-

@@ -49,11 +49,38 @@ function showCategoryResources(id) {
 		)
 }
 
-// getCategories = () => {
-// 	fetch(baseUrl + 'categories')
-// 		.then(res => res.json()
-// 			.then(data => {
-// 				console.log("categories data: ", data)
-// 			})
-// 		)
-// }
+function newCategoryForm() {
+	let categoryForm = (`
+		<fieldset>
+			<strong>New Category</strong>
+			<form id='new-category-form'>
+				<input id='name' placeholder='category name' /><br>
+				<button type='submit'>Submit Category</button>
+			</form>
+		</fieldset>
+		`)
+	document.getElementById('new-form-div').innerHTML = categoryForm
+	createCategory()
+}
+
+function createCategory() {
+	let form = document.querySelector('form#new-category-form')
+	form.addEventListener('submit', function (event) {
+		event.preventDefault()
+		let name = event.currentTarget.name.value
+		let category = {
+			name: name
+		}
+
+		fetch('http://localhost:3000/api/categories', {
+			method: 'post',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(category)
+		}).then(function (response) {
+			document.getElementById('new-form-div').innerHTML = ''
+		});
+	})
+}
