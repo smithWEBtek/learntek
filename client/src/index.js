@@ -1,8 +1,15 @@
-listenToDataLinks()
-listenForNewFormLinks()
+const baseUrl = 'https://learntek.herokuapp.com/api/'
+// const baseUrl = 'http://localhost:3000/api/'
 
-// const baseUrl = 'https://learntek.herokuapp.com/api/'
-const baseUrl = 'http://localhost:3000/api/'
+const dataDiv = document.getElementById('api-data')
+
+clearDataDiv()
+listenToDataLinks()
+listenToNewFormLinks()
+
+function clearDataDiv() {
+	dataDiv.innerHTML = ''
+}
 
 function listenToDataLinks() {
 	let apiLinks = document.querySelectorAll('a.api-links')
@@ -68,7 +75,7 @@ function getApiData(event) {
 		)
 }
 
-function listenForNewFormLinks() {
+function listenToNewFormLinks() {
 	let apiNewLinks = document.querySelectorAll('a.api-new-links')
 	apiNewLinks.forEach(link => {
 		link.addEventListener('click', getNewForm)
@@ -78,6 +85,7 @@ function listenForNewFormLinks() {
 function getNewForm(event) {
 	event.preventDefault()
 	let form = this.id
+	clearDataDiv()
 
 	switch (form) {
 		case 'new-track':
@@ -93,7 +101,7 @@ function getNewForm(event) {
 			newCategoryForm()
 			break;
 		default:
-			console.log('there was no form specified in the request');
+			console.log('there was no form specified in the request, (check this.id) ');
 	}
 }
 
