@@ -6,19 +6,17 @@ $(() => {
 	clearApiDataDiv()
 })
 
-// figure out how to have a fallback api source for Ajax request
-// const baseUrl = 'https://learntek.herokuapp.com/api/'
-// const baseUrl = 'http://localhost:3000/api/' || 'https://learntek.herokuapp.com/api/'
-const baseUrl = 'http://localhost:3000/api/'
+const baseUrl = 'https://learntek.herokuapp.com/api/'
+// const baseUrl = 'http://localhost:3000/api/'
 
 function clearApiDataDiv() {
 	$('div#api-data').html('')
-	console.log('clearApiDataDiv() called **********************************')
+	console.log('clearApiDataDiv() called ***')
 }
 
 function clearNewFormDiv() {
 	$('#new-form-div').html('')
-	console.log('clearNewFormDiv() called **********************************')
+	console.log('clearNewFormDiv() called ***')
 }
 
 function listenToDataLinks() {
