@@ -59,7 +59,7 @@ function createActivity() {
 			status: status
 		}
 
-		fetch('http://localhost:3000/api/activities', {
+		fetch(`${baseUrl}activities`, {
 			method: 'post',
 			headers: {
 				'Accept': 'application/json, text/plain, */*',

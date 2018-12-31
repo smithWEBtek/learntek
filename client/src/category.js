@@ -73,7 +73,7 @@ function createCategory() {
 			name: name
 		}
 
-		fetch('http://localhost:3000/api/categories', {
+		fetch(`${baseUrl}categories`, {
 			method: 'post',
 			headers: {
 				'Accept': 'application/json, text/plain, */*',

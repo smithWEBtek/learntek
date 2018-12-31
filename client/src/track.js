@@ -77,7 +77,7 @@ function createTrack() {
 			category_id: category_id
 		}
 
-		fetch('http://localhost:3000/api/tracks', {
+		fetch(`${baseUrl}tracks`, {
 			method: 'post',
 			headers: {
 				'Accept': 'application/json, text/plain, */*',

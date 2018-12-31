@@ -18,7 +18,7 @@ class Resource {
 		<label class='subtitle'>New Resource</label>
 		<div class="field">
 			<div class="control">
-				<div class="select is-success">
+				<div class="select is-info">
 					<select>
 						<option>category</option>
 						${categoryOptions}
@@ -28,35 +28,35 @@ class Resource {
 		</div>
 		<div class="field">
 			<div class="control has-icons-left has-icons-right">
-				<input class="input is-success" type="text" placeholder="name">
+				<input class="input is-info" type="text" placeholder="name">
 			</div>
 		</div>
 		<div class="field">
 			<div class="control has-icons-left has-icons-right">
-				<input class="input is-success" type="text" placeholder="description">
+				<input class="input is-info" type="text" placeholder="description">
 			</div>
 		</div>
 		<div class="field">
 			<div class="control has-icons-left has-icons-right">
-				<input class="input is-success" type="text" placeholder="format">
+				<input class="input is-info" type="text" placeholder="format">
 			</div>
 		</div>
 		<div class="field">
 			<div class="control has-icons-left has-icons-right">
-				<input class="input is-success" type="text" placeholder="url">
+				<input class="input is-info" type="text" placeholder="url">
 			</div>
 		</div>
 		 
 		<div class="field is-grouped">
-			<div class="control is-success">
-				<button class="button is-link">Submit</button>
+			<div class="control is-info">
+				<button class="input is-primary">Submit</button>
 			</div>
 			<div class="control">
-				<button class="button is-text">Cancel</button>
+				<button class="input is-text is-danger">Cancel</button>
 			</div>
 		</div>
 		</form>
-`)
+	`)
 	}
 }
 
@@ -108,7 +108,7 @@ function createResource() {
 			format: format
 		}
 
-		fetch('http://localhost:3000/api/resources', {
+		fetch(`${baseUrl}resources`, {
 			method: 'post',
 			headers: {
 				'Accept': 'application/json, text/plain, */*',
