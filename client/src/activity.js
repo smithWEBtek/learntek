@@ -5,6 +5,56 @@ class Activity {
 		this.description = obj.description
 		this.status = obj.status
 	}
+
+	static activityForm() {
+		let activityForm = (`
+		<form id='new-activity-form'>
+			<label class='subtitle'>New Activity</label>
+		
+			<!-- name -->
+			<div class="field">
+				<div class="control has-icons-left has-icons-right">
+					<input class="input is-info" type="text" placeholder="name">
+				</div>
+			</div>
+		
+			<!-- description -->
+			<div class="field">
+				<div class="control has-icons-left has-icons-right">
+					<input class="input is-info" type="text" placeholder="description">
+				</div>
+			</div>
+		
+			<!-- status -->
+			<div class="field">
+				<div class="control">
+					<div class="select is-info">
+						<select>
+							<option>status</option>
+							<option class="dropdown-item" value="new">new</option>
+							<option class="dropdown-item" value="started">started</option>
+							<option class="dropdown-item" value="progressing">progressing</option>
+							<option class="dropdown-item" value="complete">complete</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		
+			<!-- Submit -->
+			<div class="field is-grouped">
+				<div class="control is-info">
+					<button class="input is-primary">Submit</button>
+				</div>
+				<!-- Cancel -->
+				<div class="control">
+					<button class="input is-text is-danger">Cancel</button>
+				</div>
+			</div>
+		</form>
+		`)
+		document.getElementById('new-form-div').innerHTML = activityForm
+		createActivity()
+	}
 }
 
 Activity.prototype.activityHTML = function () {
@@ -19,39 +69,20 @@ Activity.prototype.activityHTML = function () {
 	`)
 }
 
-
 function newActivityForm() {
 	clearApiDataDiv()
-	let activityForm = (`
-		<fieldset>
-			<strong>New Activity</strong>
-			<form id='new-activity-form'>
-				<input id='name' placeholder='activity name' /><br>
-				<input id='description' placeholder='description'/><br>
-
-				<select id='statusSelect' placeholder='status'>
-					<option>choose status</option>
-					<option value='new'>new</option>
-					<option value='started'>started</option>
-					<option value='progressing'>progressing</option>
-					<option value='complete'>complete</option>
-				</select><br>
-
-				<button type='submit'>Submit Activity</button>
-			</form>
-		</fieldset>
-		`)
-	document.getElementById('new-form-div').innerHTML = activityForm
-	createActivity()
+	let form = Activity.activityForm()
+	$('#new-form-div').html(form)
+	createResource()
 }
 
 function createActivity() {
-	let form = document.querySelector('form#new-activity-form')
-	form.addEventListener('submit', function (event) {
+	$('form#new-activity-form').on('submit', function (event) {
 		event.preventDefault()
-		let name = event.currentTarget.name.value
-		let description = event.currentTarget.description.value
-		let status = event.currentTarget.statusSelect.value
+
+		let name = event.target[0].value
+		let description = event.target[1].value
+		let status = event.target[2].value
 
 		let activity = {
 			name: name,
