@@ -2,6 +2,44 @@ static trackForm(categoryOptions) {
 return (`
 <form id='new-track-form'>
 	<label class='subtitle'>New Resource</label>
+
+	<!-- date -->
+	<div class="field">
+		<div class="control has-icons-left has-icons-right">
+			<input class="input is-info" type="date" placeholder="date">
+		</div>
+	</div>
+
+	<!-- name -->
+	<div class="field">
+		<div class="control has-icons-left has-icons-right">
+			<input class="input is-info" type="text" placeholder="name">
+		</div>
+	</div>
+
+	<!-- description -->
+	<div class="field">
+		<div class="control has-icons-left has-icons-right">
+			<input class="input is-info" type="text" placeholder="description">
+		</div>
+	</div>
+
+	<!-- status -->
+	<div class="field">
+		<div class="control">
+			<div class="select is-info">
+				<select>
+					<option>status</option>
+					<option class="dropdown-item" value="new">new</option>
+					<option class="dropdown-item" value="started">started</option>
+					<option class="dropdown-item" value="progressing">progressing</option>
+					<option class="dropdown-item" value="complete">complete</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<!-- category -->
 	<div class="field">
 		<div class="control">
 			<div class="select is-info">
@@ -12,31 +50,13 @@ return (`
 			</div>
 		</div>
 	</div>
-	<div class="field">
-		<div class="control has-icons-left has-icons-right">
-			<input class="input is-info" type="text" placeholder="name">
-		</div>
-	</div>
-	<div class="field">
-		<div class="control has-icons-left has-icons-right">
-			<input class="input is-info" type="text" placeholder="description">
-		</div>
-	</div>
-	<div class="field">
-		<div class="control has-icons-left has-icons-right">
-			<input class="input is-info" type="text" placeholder="format">
-		</div>
-	</div>
-	<div class="field">
-		<div class="control has-icons-left has-icons-right">
-			<input class="input is-info" type="text" placeholder="url">
-		</div>
-	</div>
 
+	<!-- Submit -->
 	<div class="field is-grouped">
 		<div class="control is-info">
 			<button class="input is-primary">Submit</button>
 		</div>
+		<!-- Cancel -->
 		<div class="control">
 			<button class="input is-text is-danger">Cancel</button>
 		</div>

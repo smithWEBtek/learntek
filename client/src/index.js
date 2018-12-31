@@ -6,17 +6,19 @@ $(() => {
 	clearApiDataDiv()
 })
 
+function spinnerDataDiv() {
+	$('div#api-data').html(`<p><i class="fa fa-spinner fa-spin" style="font-size:24px"></i> fetching <strong>form</strong> from API</p>`)
+}
+
 const baseUrl = 'https://learntek.herokuapp.com/api/'
 // const baseUrl = 'http://localhost:3000/api/'
 
 function clearApiDataDiv() {
 	$('div#api-data').html('')
-	console.log('clearApiDataDiv() called ***')
 }
 
 function clearNewFormDiv() {
 	$('#new-form-div').html('')
-	console.log('clearNewFormDiv() called ***')
 }
 
 function listenToDataLinks() {
