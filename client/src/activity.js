@@ -71,9 +71,11 @@ Activity.prototype.activityHTML = function () {
 
 function newActivityForm() {
 	clearApiDataDiv()
+	spinnerNewFormDiv('activity')
+
 	let form = Activity.activityForm()
 	$('#new-form-div').html(form)
-	createResource()
+	createActivity()
 }
 
 function createActivity() {
@@ -97,7 +99,7 @@ function createActivity() {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(activity)
-		}).then(function (response) {
+		}).then(() => {
 			clearNewFormDiv()
 		});
 	})

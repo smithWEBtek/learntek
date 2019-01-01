@@ -6,19 +6,34 @@ $(() => {
 	clearApiDataDiv()
 })
 
-function spinnerDataDiv() {
-	$('div#api-data').html(`<p><i class="fa fa-spinner fa-spin" style="font-size:24px"></i> fetching <strong>form</strong> from API</p>`)
-}
-
 const baseUrl = 'https://learntek.herokuapp.com/api/'
 // const baseUrl = 'http://localhost:3000/api/'
 
-function clearApiDataDiv() {
-	$('div#api-data').html('')
-}
 
 function clearNewFormDiv() {
-	$('#new-form-div').html('')
+	$('div#new-form-div').html('')
+}
+
+function spinnerNewFormDiv(path) {
+	$('div#new-form-div').html(`
+		<p>
+			<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> 
+			fetching <strong>new ${path} form</strong>
+		</p>
+	`)
+}
+
+function clearApiDataDiv() {
+	$('div#api-data-div').html('')
+}
+
+function spinnerApiDataDiv(url) {
+	$('div#api-data-div').html(`
+		<p>
+			<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+			fetching <strong>${url}</strong> API data
+		</p>
+	`)
 }
 
 function listenToDataLinks() {
@@ -29,8 +44,8 @@ function getApiData(event) {
 	event.preventDefault()
 	clearNewFormDiv()
 	let url = this.id
-	let dataDiv = $('div#api-data')
-	dataDiv.html(`<p><i class="fa fa-spinner fa-spin" style="font-size:24px"></i> fetching <strong>${url}</strong> API data</p>`)
+	let dataDiv = $('div#api-data-div')
+	spinnerApiDataDiv(url)
 
 	setTimeout(() => {
 		$.ajax({
@@ -73,7 +88,7 @@ function getApiData(event) {
 					console.log('there was no data returned');
 			}
 		})
-	}, 1000);
+	}, 500);
 }
 
 function listenForNewFormLinks() {

@@ -70,6 +70,7 @@ Resource.prototype.resourceHTML = function () {
 
 function newResourceForm() {
 	clearApiDataDiv()
+	spinnerNewFormDiv('resource')
 	let categoryOptions = ''
 
 	fetch(baseUrl + 'categories', {
@@ -115,7 +116,7 @@ function createResource() {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(resource)
-		}).then(function (response) {
+		}).then(() => {
 			clearNewFormDiv()
 		});
 	})

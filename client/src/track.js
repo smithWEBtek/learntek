@@ -100,7 +100,7 @@ Track.prototype.trackHTML = function () {
 
 function newTrackForm() {
 	clearApiDataDiv()
-	spinnerDataDiv()
+	spinnerNewFormDiv('track')
 	let categoryOptions = ''
 
 	fetch(baseUrl + 'categories', {
@@ -146,7 +146,7 @@ function createTrack() {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(track)
-		}).then(function (response) {
+		}).then(() => {
 			clearNewFormDiv()
 		});
 	})
