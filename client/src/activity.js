@@ -18,7 +18,6 @@ Activity.prototype.activityHTML = function () {
 	`)
 }
 
-
 function newActivityForm() {
 
 	let activityForm = (`
@@ -48,9 +47,9 @@ function createActivity() {
 	let form = document.querySelector('form#new-activity-form')
 	form.addEventListener('submit', function (event) {
 		event.preventDefault()
-		let name = event.currentTarget.name.value
-		let description = event.currentTarget.description.value
-		let status = event.currentTarget.statusSelect.value
+		let name = event.target[0].value
+		let description = event.target[1].value
+		let status = event.target[2].value
 
 		let activity = {
 			name: name,
@@ -58,15 +57,48 @@ function createActivity() {
 			status: status
 		}
 
-		fetch('http://localhost:3000/api/activities', {
-			method: 'post',
+		let myRequest = new Request(baseUrl + 'activities')
+		// let myInit = {
+		// 	method: 'POST',
+		// 	body: JSON.stringify(activity),
+		// 	headers: {
+		// 		'Accept': 'application/json, text/plain, */*',
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	mode: 'cors',
+		// 	cache: 'default'
+		// }
+		// console.log("myInit: ", myInit);
+
+		console.log("myRequest: ", myRequest);
+
+		// fetch(myRequest, myInit)
+		// works the same 
+
+		fetch(myRequest, {
+			method: 'POST',
+			body: JSON.stringify(activity),
 			headers: {
 				'Accept': 'application/json, text/plain, */*',
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(activity)
-		}).then(function (response) {
-			document.getElementById('new-form-div').innerHTML = ''
-		});
+			mode: 'cors',
+			cache: 'default'
+		}).then(res => res.json()
+			.then(data => {
+				console.log("data: ", data);
+				document.getElementById('new-form-div').innerHTML = data;
+			})
+		)
 	})
 }
+
+
+// fetch('http://localhost:3000/api/activities', {
+// 			method: 'post',
+// 			headers: {
+// 				'Accept': 'application/json, text/plain, */*',
+// 				'Content-Type': 'application/json'
+// 			},
+// 			body: JSON.stringify(activity)
+// 		})

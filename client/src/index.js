@@ -1,5 +1,5 @@
-const baseUrl = 'https://learntek.herokuapp.com/api/'
-// const baseUrl = 'http://localhost:3000/api/'
+// const baseUrl = 'https://learntek.herokuapp.com/api/'
+const baseUrl = 'http://127.0.0.1:3000/api/'
 
 const dataDiv = document.getElementById('api-data')
 
