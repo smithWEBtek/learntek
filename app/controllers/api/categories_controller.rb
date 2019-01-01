@@ -12,10 +12,6 @@ class Api::CategoriesController < ApplicationController
 
 	def create
 		@category = Category.new(category_params)
-		if params['resource_id']
-			resource = Resource.find_by_id(params['resource_id'])
-			@category.resources.push(resource)
-		end
 		if @category.save
 			render json: @category
 		else
